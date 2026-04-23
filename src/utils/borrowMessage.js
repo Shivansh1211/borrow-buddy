@@ -3,7 +3,6 @@
  */
 export function buildBorrowRequestMessage({
   borrowerName,
-  borrowerRegistration,
   borrowerEmail,
   itemName,
   ownerName,
@@ -14,8 +13,7 @@ I'd like to borrow "${itemName}" through Borrow Buddy.
 
 My details:
 • Name: ${borrowerName}
-• Registration: ${borrowerRegistration}
-• College email: ${borrowerEmail}
+• Email: ${borrowerEmail}
 
 Please let me know if it's available and how you'd like to hand it off. Thanks!`
 }

@@ -72,7 +72,7 @@ export function Lent() {
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-xs text-slate-400">
                   <Handshake className="h-3.5 w-3.5" />
-                  On-campus lend (demo data)
+                  Peer-to-peer lend
                 </div>
               </Card>
             </li>

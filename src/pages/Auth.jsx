@@ -7,46 +7,21 @@ import { Input } from '../components/ui/Input.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
 import { LogIn, UserPlus } from 'lucide-react'
 
-const SHARDA_DOMAIN = '@ug.sharda.ac.in'
-
-const initial = { name: '', registrationNumber: '', collegeEmail: '', password: '' }
+const initial = { name: '', email: '', password: '' }
 
 function validate(values, mode) {
   const errors = {}
-  const reg = values.registrationNumber.trim()
 
   if (mode === 'register') {
     if (!values.name.trim()) errors.name = 'Name is required'
     else if (values.name.trim().length < 2) errors.name = 'At least 2 characters'
-
-    if (!reg) {
-      errors.registrationNumber = 'Registration number is required'
-    } else if (!/^[A-Za-z0-9/-]{4,}$/.test(reg)) {
-      errors.registrationNumber = 'Use letters, numbers, or slashes (min 4 chars)'
-    }
   }
 
-  const emailRaw = values.collegeEmail.trim()
+  const emailRaw = values.email.trim()
   if (!emailRaw) {
-    errors.collegeEmail = 'College email is required'
-  } else {
-    const normalized = emailRaw.toLowerCase()
-    if (!normalized.endsWith(SHARDA_DOMAIN)) {
-      errors.collegeEmail = `Use your Sharda email ending with ${SHARDA_DOMAIN}`
-    } else if (normalized.split('@').length !== 2) {
-      errors.collegeEmail = 'Enter a valid email address'
-    } else {
-      const local = normalized.slice(0, -SHARDA_DOMAIN.length)
-      const segments = local.split('.')
-      if (segments.length < 2 || !segments[1]) {
-        errors.collegeEmail = `Format: ${reg || 'REG'}.firstname${SHARDA_DOMAIN}`
-      } else if (segments[0].toLowerCase() !== reg.toLowerCase()) {
-        errors.collegeEmail =
-          'The part before the first dot must match your registration number (e.g. 2023351166.shivansh)'
-      } else if (!/^[a-z0-9._-]+$/i.test(local)) {
-        errors.collegeEmail = 'Email contains invalid characters'
-      }
-    }
+    errors.email = 'Email is required'
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailRaw)) {
+    errors.email = 'Enter a valid email address'
   }
 
   if (!values.password) {
@@ -84,8 +59,8 @@ export function Auth() {
     try {
       const endpoint = mode === 'login' ? '/api/auth/login' : '/api/auth/register'
       const payload = mode === 'login' 
-        ? { email: values.collegeEmail.trim().toLowerCase(), password: values.password }
-        : { name: values.name.trim(), email: values.collegeEmail.trim().toLowerCase(), password: values.password }
+        ? { email: values.email.trim().toLowerCase(), password: values.password }
+        : { name: values.name.trim(), email: values.email.trim().toLowerCase(), password: values.password }
       
       const res = await fetch(`${import.meta.env.VITE_API_URL || ''}${endpoint}`, {
         method: 'POST',
@@ -130,8 +105,8 @@ export function Auth() {
             </h1>
             <p className="mt-1 text-sm text-slate-500">
               {mode === 'login'
-                ? 'Sign in with your campus details.'
-                : 'Join Borrow Buddy with your college credentials.'}
+                ? 'Sign in to access your account.'
+                : 'Join Borrow Buddy today.'}
             </p>
           </div>
 
@@ -146,30 +121,20 @@ export function Auth() {
                   value={values.name}
                   onChange={handleChange}
                   error={errors.name}
-                  placeholder="e.g. Shivansh Kumar"
-                />
-                <Input
-                  id="registrationNumber"
-                  name="registrationNumber"
-                  label="Registration number"
-                  value={values.registrationNumber}
-                  onChange={handleChange}
-                  error={errors.registrationNumber}
-                  placeholder="e.g. 2023351166"
-                  hint="Same number you use before the dot in your college email."
+                  placeholder="e.g. John Doe"
                 />
               </>
             )}
             <Input
-              id="collegeEmail"
-              name="collegeEmail"
+              id="email"
+              name="email"
               type="email"
-              label="College email ID"
+              label="Email address"
               autoComplete="email"
-              value={values.collegeEmail}
+              value={values.email}
               onChange={handleChange}
-              error={errors.collegeEmail}
-              hint={mode === 'register' ? "registration.firstname@ug.sharda.ac.in — the domain is the same for everyone." : ""}
+              error={errors.email}
+              placeholder="you@example.com"
             />
             <Input
               id="password"

@@ -127,8 +127,7 @@ export function AddItem() {
           <div className="rounded-xl border border-brand-100 bg-brand-50/50 p-4">
             <p className="mb-3 text-sm font-semibold text-slate-800">How can borrowers reach you?</p>
             <p className="mb-4 text-xs text-slate-600">
-              Add one or both. When someone taps Borrow, we generate a message with their name, registration, and
-              college email.
+              Add one or both. When someone taps Borrow, we generate a message with their name and email address.
             </p>
             <div className="space-y-4">
               <Input

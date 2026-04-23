@@ -16,8 +16,7 @@ export function BorrowContactModal({ open, onClose, item, borrower, onContacted 
 
   const message = buildBorrowRequestMessage({
     borrowerName: borrower.name,
-    borrowerRegistration: borrower.registrationNumber ?? '',
-    borrowerEmail: borrower.collegeEmail ?? '',
+    borrowerEmail: borrower.email ?? '',
     itemName: item.name,
     ownerName: item.ownerName,
   })

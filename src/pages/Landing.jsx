@@ -2,26 +2,26 @@ import { Link } from 'react-router-dom'
 import { Navbar } from '../components/layout/Navbar.jsx'
 import { Button } from '../components/ui/Button.jsx'
 import { Card } from '../components/ui/Card.jsx'
-import { ClipboardList, Shield, GraduationCap, ArrowRight } from 'lucide-react'
+import { ClipboardList, Shield, Users, ArrowRight } from 'lucide-react'
 
 const features = [
   {
     icon: ClipboardList,
     title: 'Track items',
     description:
-      'Listings show WhatsApp or Instagram—tap Borrow to send a ready-made message with your campus details.',
+      'Listings show WhatsApp or Instagram—tap Borrow to send a ready-made message with your contact details.',
   },
   {
     icon: Shield,
     title: 'Safe lending',
     description:
-      'Built for trust: clear ownership, availability, and simple handoffs between verified students.',
+      'Built for trust: clear ownership, availability, and simple handoffs between trusted users.',
   },
   {
-    icon: GraduationCap,
-    title: 'College-only access',
+    icon: Users,
+    title: 'Community driven',
     description:
-      'Sign in with your Sharda college email and registration number so the community stays within your campus.',
+      'Join a growing community of people sharing items securely and building a local rental economy.',
   },
 ]
 
@@ -38,7 +38,7 @@ export function Landing() {
 
         <div className="mx-auto max-w-4xl text-center">
           <p className="mb-4 inline-flex items-center justify-center gap-2 rounded-full border border-brand-200/80 bg-white/80 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-brand-700 shadow-sm">
-            For students, by students
+            For everyone, everywhere
           </p>
           <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 text-balance sm:text-5xl lg:text-6xl">
             Borrow Buddy
@@ -47,8 +47,8 @@ export function Landing() {
             Borrow smarter. Return responsibly.
           </p>
           <p className="mx-auto mt-3 max-w-lg text-slate-500">
-            Share textbooks, gear, and essentials with classmates. A calm, modern way to lend and borrow
-            on campus—without the group chat chaos.
+            Rent out your gear or borrow what you need. A calm, modern way to lend and borrow
+            in your neighborhood—without the hassle.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link to="/auth">

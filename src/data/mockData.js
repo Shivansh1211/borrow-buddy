@@ -25,7 +25,7 @@ export const mockAvailableItems = [
     available: false,
     description: 'Out with the sports club until next week.',
     whatsapp: '919998887776',
-    instagram: 'emily_on_campus',
+    instagram: 'emily_reads',
   },
   {
     id: 'it-4',
@@ -80,7 +80,7 @@ export const mockLentItems = [
   },
   {
     id: 'ln-2',
-    itemName: 'Campus map (laminated)',
+    itemName: 'City guide map (laminated)',
     borrowerName: 'Alex Rivera',
     status: 'returned',
   },
