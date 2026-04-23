@@ -46,7 +46,7 @@ export function AddItem() {
     setSuccess(false)
     try {
       const token = localStorage.getItem('borrow-buddy-token')
-      const res = await fetch('/api/items', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/items`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

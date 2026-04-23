@@ -19,7 +19,7 @@ export function Lent() {
     const fetchLent = async () => {
       try {
         const token = localStorage.getItem('borrow-buddy-token')
-        const res = await fetch('/api/users/lent', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/lent`, {
           headers: { Authorization: `Bearer ${token}` }
         })
         if (res.ok) {

@@ -20,7 +20,7 @@ export function Dashboard() {
     const fetchItems = async () => {
       try {
         const token = localStorage.getItem('borrow-buddy-token')
-        const res = await fetch('/api/items', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/items`, {
           headers: { Authorization: `Bearer ${token}` }
         })
         if (res.ok) {
@@ -61,7 +61,7 @@ export function Dashboard() {
       setBorrowedIds((prev) => new Set(prev).add(contactItem._id))
       try {
         const token = localStorage.getItem('borrow-buddy-token')
-        await fetch(`/api/items/${contactItem._id}/borrow`, {
+        await fetch(`${import.meta.env.VITE_API_URL || ''}/api/items/${contactItem._id}/borrow`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}` }
         })

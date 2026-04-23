@@ -87,7 +87,7 @@ export function Auth() {
         ? { email: values.collegeEmail.trim().toLowerCase(), password: values.password }
         : { name: values.name.trim(), email: values.collegeEmail.trim().toLowerCase(), password: values.password }
       
-      const res = await fetch(endpoint, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

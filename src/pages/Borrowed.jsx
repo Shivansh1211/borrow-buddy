@@ -25,7 +25,7 @@ export function Borrowed() {
     const fetchBorrowed = async () => {
       try {
         const token = localStorage.getItem('borrow-buddy-token')
-        const res = await fetch('/api/users/borrowed', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/users/borrowed`, {
           headers: { Authorization: `Bearer ${token}` }
         })
         if (res.ok) {
@@ -44,7 +44,7 @@ export function Borrowed() {
   const handleReturn = async (id, itemId) => {
     try {
       const token = localStorage.getItem('borrow-buddy-token')
-      await fetch(`/api/items/${itemId}/return`, {
+      await fetch(`${import.meta.env.VITE_API_URL || ''}/api/items/${itemId}/return`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
       })
