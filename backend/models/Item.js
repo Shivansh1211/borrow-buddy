@@ -14,17 +14,28 @@ const itemSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  available: {
-    type: Boolean,
-    default: true
+  communityId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Community',
+    required: true
   },
-  whatsapp: {
-    type: String,
-    default: ''
+  images: [{
+    type: String
+  }],
+  rentalPricePerDay: {
+    type: Number,
+    required: true,
+    default: 0
   },
-  instagram: {
+  securityDeposit: {
+    type: Number,
+    required: true,
+    default: 0
+  },
+  status: {
     type: String,
-    default: ''
+    enum: ['AVAILABLE', 'REQUESTED', 'BORROWED', 'UNAVAILABLE'],
+    default: 'AVAILABLE'
   }
 }, { timestamps: true });
 

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, PlusCircle, Package, Handshake } from 'lucide-react'
+import { LayoutDashboard, PlusCircle, Package, Handshake, Users } from 'lucide-react'
 
 const linkBase =
   'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200'
@@ -19,6 +19,15 @@ export function Sidebar() {
         >
           <LayoutDashboard className="h-5 w-5 shrink-0 text-brand-600" />
           Dashboard
+        </NavLink>
+        <NavLink
+          to="/communities"
+          className={({ isActive }) =>
+            `${linkBase} ${isActive ? 'bg-brand-50 text-brand-800 shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
+          }
+        >
+          <Users className="h-5 w-5 shrink-0 text-brand-600" />
+          Communities
         </NavLink>
         <NavLink
           to="/items/new"

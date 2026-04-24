@@ -1,29 +1,51 @@
 import mongoose from 'mongoose';
 
 const transactionSchema = new mongoose.Schema({
-  item: {
+  itemId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Item',
     required: true
   },
-  borrower: {
+  lenderId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
-  lender: {
+  borrowerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  communityId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Community',
+    required: true
+  },
+  startDate: {
+    type: Date,
+    required: true
+  },
+  expectedReturnDate: {
+    type: Date,
+    required: true
+  },
+  actualReturnDate: {
+    type: Date,
+    default: null
   },
   status: {
     type: String,
-    enum: ['active', 'returned'],
-    default: 'active'
+    enum: ['PENDING', 'APPROVED', 'REJECTED', 'ACTIVE', 'COMPLETED', 'DISPUTED'],
+    default: 'PENDING'
   },
-  borrowDate: {
-    type: Date,
-    default: Date.now
+  totalAmount: {
+    type: Number,
+    required: true,
+    default: 0
+  },
+  lateFee: {
+    type: Number,
+    default: 0
   }
 }, { timestamps: true });
 

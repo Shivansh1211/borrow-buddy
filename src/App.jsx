@@ -5,6 +5,7 @@ import { Dashboard } from './pages/Dashboard.jsx'
 import { AddItem } from './pages/AddItem.jsx'
 import { Borrowed } from './pages/Borrowed.jsx'
 import { Lent } from './pages/Lent.jsx'
+import { Communities } from './pages/Communities.jsx'
 import { ProtectedRoute } from './components/ProtectedRoute.jsx'
 
 export default function App() {
@@ -41,6 +42,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Lent />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/communities"
+        element={
+          <ProtectedRoute>
+            <Communities />
           </ProtectedRoute>
         }
       />
